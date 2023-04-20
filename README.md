@@ -6,7 +6,7 @@ Just copy and paste my code
 Compilation
 -------------------------------------------------------------------------------
 
-Project -> Manage NuGet Packages... then search and install:
+Project -> Manage NuGet Packages..., then search and install:
 
 Microsoft.EntityFrameworkCore
 
@@ -18,4 +18,4 @@ Microsoft.EntityFrameworkCore.Tools
 
 Microsoft.VisualStudio.Web.CodeGeneration.Design
 
-then change value of "server" in appsettings.json
+then change the value of "server" in appsettings.json
