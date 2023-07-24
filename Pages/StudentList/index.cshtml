@@ -1,0 +1,63 @@
+﻿@page
+@model SuperMegaProjekt.Pages.StudentList.indexModel
+@{
+    ViewData["Title"] = "index";
+}
+
+
+
+
+<br />
+<br />
+
+<div class="col-3">
+    <a asp-page="Create" class="btn btn-info btn-sm">Create New Student</a>
+</div>
+<div class="col-12 boarder p-3 mt-3">
+    <form method="post">
+    </form>
+</div>
+
+
+<h2 class="text-info">Lista Studentów</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nazwisko</th>
+            <th>Imie</th>
+            <th>Wiek</th>
+            <th>Grupa</th>
+            <th>Edytuj</th>
+            <th>Usuń</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var name in Model.Student)
+        {
+            <tr>
+                <td>@Html.DisplayFor(m => name.StudentId)</td>
+                <td>@Html.DisplayFor(m => name.LastName)</td>
+                <td>@Html.DisplayFor(m => name.FirstName)</td>
+                <td>@Html.DisplayFor(m => name.Age)</td>
+                <td>@Html.DisplayFor(m => name.Group.Name)</td>
+                <td>
+                    <!--  edytowania użytkownika -->
+                    <a asp-page="Edit" asp-route-id="@name.StudentId" class="btn btn-info btn-sm">Edit</a>
+                </td>
+                <td>
+                    <!--  usuwania użytkownika -->
+                    <form method="post">
+                    <button asp-page-handler="Delete"
+                            onclick="return confirm('Na pewno chcesz usunąć tego użytkownika?')"
+                        asp-route-id="@name.StudentId"
+                            class="btn btn-danger btn-sm">
+                        Delete
+                    </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

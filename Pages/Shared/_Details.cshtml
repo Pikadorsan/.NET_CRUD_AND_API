@@ -1,0 +1,55 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model SuperMegaProjekt.Pages.GroupList.indexModel
+@{
+    ViewData["Title"] = "index";
+}
+
+
+<h1>asdadasdasd</h1>
+
+
+<div class="col-3">
+    <a asp-page="Create" class="btn btn-info btn-sm">Create New Student</a>
+</div>
+<div class="col-12 boarder p-3 mt-3">
+    <form method="post">
+    </form>
+</div>
+
+
+<h2 class="text-info">Lista Studentów</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Grupa</th>
+            <th>Edit</th>
+            <th>Deletr</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var name in Model.Groups)
+        {
+            <tr>
+                <td>@Html.DisplayFor(m => name.GroupId)</td>
+                <td>@Html.DisplayFor(m => name.Name)</td>
+                <td>
+                    <!--  edytowania użytkownika -->
+                    <a asp-page="Edit" asp-route-id="@name.GroupId" class="btn btn-info btn-sm">Edit</a>
+                </td>
+                <td>
+                    <!--  usuwania użytkownika -->
+                    <form method="post">
+                        <button asp-page-handler="Delete" asp-route-id="@name.GroupId"
+                                onclick="return confirm('Na pewno chcesz usunąć tę grupę?')"
+                                class="btn btn-danger btn-sm">
+                            Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

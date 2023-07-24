@@ -1,0 +1,70 @@
+﻿@page
+@model SuperMegaProjekt.Pages.StudentList.CreateModel
+@{
+    ViewData["Title"] = "Create";
+}
+<br />
+<h2 class="text-info">Add New Student</h2>
+<br />
+
+<div class="border container" style="padding:30px;">
+    <form method="post">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="Student.LastName"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Student.LastName" class="form-control" type="text" placeholder="LastName" />
+            </div>
+            <span asp-validation-for="Student.LastName" class="text-danger"></span>
+        </div>
+        <br>
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="Student.FirstName"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Student.FirstName" class="form-control" type="text" placeholder="FirstName" />
+            </div>
+            <span asp-validation-for="Student.FirstName" class="text-danger"></span>
+        </div>
+        <br>
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="Student.Age"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Student.Age" class="form-control" type="number" placeholder="Age" />
+
+            </div>
+            <span asp-validation-for="Student.Age" class="text-danger"></span>
+        </div>
+        <br>
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="Student.GroupId"></label>
+            </div>
+            <div class="col-6">
+                <select asp-for="Student.GroupId" class="form-control">
+                    <option value="">-- Select a group --</option>
+                    @foreach (var group in Model.Groups)
+                    {
+                        <option value="@group.GroupId">@group.Name</option>
+                    }
+                </select>
+            </div>
+            <span asp-validation-for="Student.GroupId" class="text-danger"></span>
+        </div>
+        <br>
+        <div class="form-group row">
+            <div class="col-3 offset-4">
+                <input type="submit" value="Create" class="btn btn-primary btn-sm" />
+            </div>
+            <div class="col-3">
+                <a asp-page="Index" class="btn btn-success btn-sm">Back to List</a>
+            </div>
+        </div>
+    </form>
+</div>
+
